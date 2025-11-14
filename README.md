@@ -1,6 +1,6 @@
 <div align="center">
 
-# ☕ Tipos de Fondos de Inversión ETL Pipeline
+# 📊 Tipos de Fondos de Inversión ETL Pipeline
 ### Arquitectura Medallion en Azure Databricks
 
 [![Databricks](https://img.shields.io/badge/Databricks-FF3621?style=for-the-badge&logo=databricks&logoColor=white)](https://databricks.com/)
