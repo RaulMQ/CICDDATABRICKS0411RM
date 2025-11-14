@@ -113,6 +113,10 @@ Elaborado en Databricks
 [GitHub]https://github.com/ltechdev
 [Email] raulmendozaq@gmail.com
 
+## 📄 Licencia
+
+Este proyecto está bajo la Licencia MIT - ver el archivo [LICENSE](LICENSE) para más detalles.
+
 **Data Engineering** | **Azure Databricks** | **Delta Lake** | **CI/CD**
 
 ---
