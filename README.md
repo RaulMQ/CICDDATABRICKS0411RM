@@ -1,21 +1,34 @@
+<div align="center">
 
-# ☕ Modelo Fondo de Inversón ETL Pipeline
-### Arquitectura Medallon en Azure Databricks
+# ☕ Tipos de Fondos de Inversión ETL Pipeline
+### Arquitectura Medallion en Azure Databricks
 
+[![Databricks](https://img.shields.io/badge/Databricks-FF3621?style=for-the-badge&logo=databricks&logoColor=white)](https://databricks.com/)
+[![Azure](https://img.shields.io/badge/Azure-0078D4?style=for-the-badge&logo=microsoft-azure&logoColor=white)](https://azure.microsoft.com/)
+[![PySpark](https://img.shields.io/badge/PySpark-E25A1C?style=for-the-badge&logo=apache-spark&logoColor=white)](https://spark.apache.org/)
+[![Delta Lake](https://img.shields.io/badge/Delta_Lake-00ADD8?style=for-the-badge&logo=delta&logoColor=white)](https://delta.io/)
+[![Power BI](https://img.shields.io/badge/Power_BI-F2C811?style=for-the-badge&logo=power-bi&logoColor=black)](https://powerbi.microsoft.com/)
+[![CI/CD](https://img.shields.io/badge/CI%2FCD-GitHub_Actions-2088FF?style=for-the-badge&logo=github-actions&logoColor=white)](https://github.com/features/actions)
+
+*Pipeline automatizado de datos para análisis de ventas con arquitectura de tres capas y despliegue continuo*
+
+</div>
+
+---
 
 ## 🎯 Descripción
 
-Pipeline ETL que transforma datos crudos de información de Fondos de inversion en insights accionables, implementando la **Arquitectura Medallon** (Raw-Bronze-Silver-Gold) en Azure Databricks con **CI/CD completo** y **Delta Lake** para garantizar consistencia ACID.
+Pipeline ETL enterprise-grade que transforma datos crudos de información de fondos de inversión de un periodo en insights accionables, implementando la **Arquitectura Medallion** (Bronze-Silver-Gold) en Azure Databricks con **CI/CD completo** y **Delta Lake** para garantizar consistencia ACID.
 
 ### ✨ Características Principales
 
 - 🔄 **ETL Automatizado** - Pipeline completo con despliegue automático via GitHub Actions
-- 🏗️ **Arquitectura Medallon** - Separación clara de capas Raw → Bronze → Silver → Gold
+- 🏗️ **Arquitectura Medallion** - Separación clara de capas Bronze → Silver → Gold
 - 📊 **Modelo Dimensional** - Star Schema optimizado para análisis de negocio
 - 🚀 **CI/CD Integrado** - Deploy automático en cada push a master
-- 📈 **Power BI Ready** - Conexión directa con SQL Warehouse para el reporte especifico
+- 📈 **Power BI Ready** - Conexión directa con SQL Warehouse
 - ⚡ **Delta Lake** - ACID transactions y time travel capabilities
-
+- 🔔 **Monitoreo** - Notificaciones automáticas y logs detallados
 
 ---
 
@@ -24,7 +37,7 @@ Pipeline ETL que transforma datos crudos de información de Fondos de inversion 
 ### Flujo de Datos
 
 ```
-📄 CSV (Raw Data)
+📄 CSV (Raw Data Insumos de archivo de tipo csv)
     ↓
 🥉 Bronze Layer (Ingesta sin transformación)
     ↓
@@ -37,51 +50,75 @@ Pipeline ETL que transforma datos crudos de información de Fondos de inversion 
 
 ### 📦 Capas del Pipeline
 
-#### 📄 Raw Layer
-
-**Propósito**: Corresponde a la zona de los insumos que corresponden a archivos en formato csv
-
-- ✅ fondos.csv
-- ✅ valores.csv
-- ✅ persona_ult_aporte.csv
+<table>
+<tr>
+<td width="33%" valign="top">
 
 #### 🥉 Bronze Layer
-**Propósito**: Corresponde a la zona de aterrizaje información desde el origen Raw
+**Propósito**: Zona de aterrizaje
 
 **Tabla**: 
-- `FONDOS`
-- `VALORES`
-- `PERSONA_ULT_APORTE` 
+`FONDO`
+`VALORES`
+`PERSONA_ULT_APORTE`
 
+**Características**:
+- ✅ Datos tal como vienen de origen de la capa raw
+- ✅ Timestamp de ingesta
+- ✅ Preservación histórica
+- ✅ Sin validaciones
+
+</td>
+<td width="33%" valign="top">
 
 #### 🥈 Silver Layer
-**Propósito**: Modelo dimensional se realiza la transformacion de los datos.
+**Propósito**: Modelo dimensional
 
 **Tablas**:
 - `FONDOS_TRANSFORMED`
 - `VALORES_TRANSFORMED`
 - `PERSONA_ULT_APORTE_TRANSFORMED`
 
+**Características**:
+- ✅ Star Schema
+- ✅ Datos normalizados
+- ✅ Datos elaborados
+- ✅ Claves foráneas
+- ✅ Validaciones completas
+
+</td>
+<td width="33%" valign="top">
 
 #### 🥇 Gold Layer
-**Propósito**: Analytics-ready para disponibilizar la información
+**Propósito**: Analytics-ready
 
 **Tablas**:
-- `VALORES_INSIGHTS`
+- VALORES_INSIGHTS
 
+**Características**:
+- ✅ Pre-agregados
+- ✅ Optimizado para BI
+- ✅ Performance máximo
+- ✅ Actualizaciones automáticas
+
+</td>
+</tr>
+</table>
+
+---
 
 ## 📁 Estructura del Proyecto
 
 ```
-Información de Fondos de Inversión ETL/
+Inf Fondos Inversion-etl/
 │
 ├── 📂 .github/
 │   └── 📂 workflows/
 │       └── 📄 databricks-deploy.yml    # Pipeline CI/CD
 │
 ├── 📂 proceso/
-│   ├── 🐍 0_preparacion_ambientre.py    # Creación de Catlogo, Creación de esquema, Creación de External, DDLS, GRANT
-│   ├── 🐍 1_ingesta.py  	         # Bronze Layer (Consume el insumo ubicado en la capa RAW)
+│   ├── 📄 0_preparacion_ambientre.py    # Creación de Catálogos, esquema, Talas, Permisos
+│   ├── 🐍 1_ingesta.py                  # Bronze Layer
 │   ├── 🐍 2_transform.py                # Silver Layer
 │   └── 🐍 3_load.py                     # Gold Layer
 │
@@ -92,7 +129,20 @@ Información de Fondos de Inversión ETL/
 
 ## 🛠️ Tecnologías
 
-Elaborado en Databricks
+<div align="center">
+
+| Tecnología | Propósito |
+|:----------:|:----------|
+| ![Databricks](https://img.shields.io/badge/Azure_Databricks-FF3621?style=flat-square&logo=databricks&logoColor=white) | Motor de procesamiento distribuido Spark |
+| ![Delta Lake](https://img.shields.io/badge/Delta_Lake-00ADD8?style=flat-square&logo=delta&logoColor=white) | Storage layer con ACID transactions |
+| ![PySpark](https://img.shields.io/badge/PySpark-E25A1C?style=flat-square&logo=apache-spark&logoColor=white) | Framework de transformación de datos |
+| ![ADLS](https://img.shields.io/badge/ADLS_Gen2-0078D4?style=flat-square&logo=microsoft-azure&logoColor=white) | Data Lake para almacenamiento persistente |
+| ![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088FF?style=flat-square&logo=github-actions&logoColor=white) | Automatización CI/CD |
+| ![Power BI](https://img.shields.io/badge/Power_BI-F2C811?style=flat-square&logo=power-bi&logoColor=black) | Business Intelligence y visualización |
+
+</div>
+
+---
 
 ## ⚙️ Requisitos Previos
 
@@ -103,11 +153,28 @@ Elaborado en Databricks
 - 📦 Azure Data Lake Storage Gen2 configurado
 - 📊 Power BI Desktop (opcional para visualización)
 
+---
+
+
+#### 4️⃣ Configurar Modo de Conectividad
+
+**DirectQuery (Recomendado)**
+- ✅ Datos siempre actualizados
+- ✅ No ocupa espacio en Power BI
+- ✅ Queries se ejecutan en Databricks
+
+**Import Mode**
+- ✅ Más rápido para visualizaciones
+- ⚠️ Requiere refresh programado
+- ⚠️ Limitación de volumen de datos
+
+---
+
 ## 👤 Autor
 
 <div align="center">
 
-### Raúl Mendoza
+### Raúl Mendoza Q.
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/luis-chaponan-tejada/)
 [![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/ltechdev)
@@ -117,12 +184,13 @@ Elaborado en Databricks
 
 </div>
 
-
-**Data Engineering** | **Azure Databricks** | **Delta Lake** | **CI/CD**
-
 ---
 
-**Proyecto**: Data Engineering - Arquitectura Medallon  
+<div align="center">
+
+**Proyecto**: Data Engineering - Arquitectura Medallion  
 **Tecnología**: Azure Databricks + Delta Lake + CI/CD  
 **Última actualización**: 2025
 
+
+</div>
