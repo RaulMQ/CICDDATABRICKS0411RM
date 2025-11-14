@@ -117,7 +117,7 @@ Inf Fondos Inversion-etl/
 │       └── 📄 databricks-deploy.yml    # Pipeline CI/CD
 │
 ├── 📂 proceso/
-│   ├── 📄 0_preparacion_ambientre.py    # Creación de Catálogos, esquema, Talas, Permisos
+│   ├── 📄 0_preparacion_ambientre.py    # Creación de Catálogos, esquema, Tablas, Permisos
 │   ├── 🐍 1_ingesta.py                  # Bronze Layer
 │   ├── 🐍 2_transform.py                # Silver Layer
 │   └── 🐍 3_load.py                     # Gold Layer
