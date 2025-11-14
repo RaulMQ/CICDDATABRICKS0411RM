@@ -103,19 +103,20 @@ Elaborado en Databricks
 - 📦 Azure Data Lake Storage Gen2 configurado
 - 📊 Power BI Desktop (opcional para visualización)
 
-
 ## 👤 Autor
 
+<div align="center">
 
-### Raúl Mendoza Quispe
+### Raúl Mendoza
 
-[LinkedIn]https://www.linkedin.com/in/raul-mendozaq/
-[GitHub]https://github.com/ltechdev
-[Email] raulmendozaq@gmail.com
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/luis-chaponan-tejada/)
+[![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/ltechdev)
+[![Email](https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:raulmendozaq@gmail.com)
 
-## 📄 Licencia
+**Data Engineering** | **Azure Databricks** | **Delta Lake** | **CI/CD**
 
-Este proyecto está bajo la Licencia MIT - ver el archivo [LICENSE](LICENSE) para más detalles.
+</div>
+
 
 **Data Engineering** | **Azure Databricks** | **Delta Lake** | **CI/CD**
 
